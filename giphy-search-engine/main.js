@@ -1,24 +1,22 @@
 // 1. <input> 태그 안의 값을 잡는다.
-
 const button = document.querySelector('#js-button');
 const inputArea =  document.querySelector('#js-input');
+const resultArea = document.querySelector('#result-area');
+
 button.addEventListener('click',() =>{
-  const inputValue = document.querySelector('#js-input').value;
-  pushToDOM(inputValue);
+  searchAndPush(inputArea.value);
 });
 
 inputArea.addEventListener('keyup', (e)=>{
-  const inputValue = document.querySelector('#js-input').value;
-  if(e.which === 13) pushToDOM(inputValue);
+  if(e.which === 13) pushToDOM(inputArea.value);
 });
 
+const searchAndPush = (keyword) => {
 // 2. API 를 활용해서 data를 받고 가공한다.
-
 const API_KEY = 'Wq16sGdb2R7IR5v7ipsPKvx7G5yk7S54'
-let keyword = '한국';
+// let keyword = '한국';
 const URL = `http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${API_KEY}`
 console.log(URL);
-
   // Ajax request
 const GiphyAJAXCall = new XMLHttpRequest();
 GiphyAJAXCall.open('GET', URL);
@@ -26,17 +24,22 @@ GiphyAJAXCall.send();
 
 GiphyAJAXCall.addEventListener('load',(e) =>{
   const rawData = e.target.response;
+  console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+  console.log(rawData);
   const parsedData = JSON.parse(rawData);
+  console.log(parsedData)
   pushToDOM(parsedData);
 })
-
+}
 // 3. GIF 파일들을 index.html에 밀어 넣는다.
 const pushToDOM = (parsedData) => {
-  const resultArea = document.querySelector('#result-area');
+  resultArea.innerHTML = null;
   const DataSet = parsedData.data;
   console.log(DataSet)
+  console.log('zzzzzzzzzzzzzzzzzzzzzz'+parsedData)
+  console.log(parsedData)
   let i = 0;
-  const imageDataSet = DataSet.forEach((imageData) =>{
+  DataSet.forEach((imageData) =>{
     let imgURL = imageData.images.fixed_height.url;
     resultArea.innerHTML += `<img src="${imgURL}" alt='${imageData.title}' />`
   })
