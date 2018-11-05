@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="hphk">I'm JS Ninja</h1>
+  <!-- href 인자가 #면 아무곳도 안갈때를 뜻함. -->
+  <a href="#">닌자 좀 어떠니</a>
+  
+  <div>
+    <a href="#" id="a">who said that</a>
+  </div>
+
+  <div>
+    <a href="#" id="b">said what</a>
+  </div>
+
+  <script>
+//=> fat arrow thin arrow
+    const anchor = document.querySelector('a');
+    const text = document.querySelector('#hphk');
+    anchor.addEventListener('click', () => {
+      text.innerHTML = 'Happy Hacking'
+    });
+
+    const anchor2 = document.querySelector('#a');
+    anchor2.addEventListener('click', () => {
+      var text = document.querySelector('#hphk');
+      text.innerHTML = '리처드 스톨만'
+    });
+  </script>
+
+</body>
+</html>
