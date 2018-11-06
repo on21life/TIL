@@ -1,11 +1,9 @@
 /* 1. 검색 */
 
-// const inputArea = document.querySelector('.js-search');
-// inputArea.addEventListener('keyup', e => {
-//   if(e.which === 13){
-
-//   }
-// })
+const inputArea = document.querySelector('.js-search');
+inputArea.addEventListener('keyup', e => {
+  if(e.which === 13) SoundCloudAPI.getTracks(inputArea.value);  
+});
 // const button = document.querySelector();
 
 /* 2. SoundCloud API  사용하기 */
@@ -28,11 +26,13 @@ const SoundCloudAPI = {
 };
 
 SoundCloudAPI.init();
-SoundCloudAPI.getTracks("bus");
 // find all sounds of buskers licensed under 'creative commons share alike'
 
 /* 3. 카드 보여주기 */
 SoundCloudAPI.renderTracks = (tracks) => {
+  let searchResults = document.querySelector("#js-search-results");
+  searchResults.innerHTML = null;
+
   tracks.forEach((track) => {
     // Card
     const card = document.createElement("div");
@@ -91,7 +91,6 @@ SoundCloudAPI.renderTracks = (tracks) => {
     card.appendChild(content);
     card.appendChild(button);
 
-    const searchResults = document.querySelector("#js-search-results");
     searchResults.appendChild(card);
   });
 };
