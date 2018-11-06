@@ -1,5 +1,13 @@
 /* 1. 검색 */
 
+// const inputArea = document.querySelector('.js-search');
+// inputArea.addEventListener('keyup', e => {
+//   if(e.which === 13){
+
+//   }
+// })
+// const button = document.querySelector();
+
 /* 2. SoundCloud API  사용하기 */
 const SoundCloudAPI = {
   init: () => {
@@ -8,7 +16,7 @@ const SoundCloudAPI = {
     });
   },
 
-  getTrack: inputValue => {
+  getTracks: inputValue => {
     SC.get("/tracks", {
       q: inputValue,
       license: ""
@@ -20,7 +28,7 @@ const SoundCloudAPI = {
 };
 
 SoundCloudAPI.init();
-SoundCloudAPI.getTrack("busker");
+SoundCloudAPI.getTracks("bus");
 // find all sounds of buskers licensed under 'creative commons share alike'
 
 /* 3. 카드 보여주기 */
@@ -40,7 +48,7 @@ SoundCloudAPI.renderTracks = (tracks) => {
     imageImg.classList.add("image_img");
     imageImg.src = (track.artwork_url || "http://lorempixel.com/100/100/abstract/");
 
-    imageDiv.appendChild(imageImg);
+    // imageDiv.appendChild(imageImg);
     
 
     // Content
@@ -58,6 +66,11 @@ SoundCloudAPI.renderTracks = (tracks) => {
     // Button
     const button = document.createElement("div");
     button.classList.add("ui", "bottom", "attached", "button", "js-button");
+    button.addEventListener('click', (e)=>{
+      console.log(e)
+      SoundCloudAPI.addPlaylist(track.permalink_url)
+      
+    });
 
     const icon = document.createElement("i");
     icon.classList.add("add", "icon");
@@ -84,8 +97,20 @@ SoundCloudAPI.renderTracks = (tracks) => {
 };
 
 /* 4. Playlist 에 추가하고 실제로 재생하기 */
-SC.oEmbed('http://soundcloud.com/forss/flickermood', {
-  auto_play: true
-}).then(function(embed){
-  console.log('oEmbed response: ', embed);
-});
+
+SoundCloudAPI.addPlaylist = (trackURL) => {
+  SC.oEmbed(trackURL, {
+    auto_play: true
+  }).then(function(embed){
+    const sidebar = document.querySelector("#js-playlist")
+    const playbox = document.createElement('div');
+    playbox.innerHTML = embed.html
+    sidebar.insertBefore(playbox, sidebar.firstChild);
+    console.log('oEmbed response: ', embed);
+  });
+}
+
+
+
+
+
