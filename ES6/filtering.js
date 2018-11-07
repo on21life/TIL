@@ -18,6 +18,7 @@ for (var i = 0; i < products.length; i++) {
 var vegetables = products.filter(function(product){
   return product.type === 'vegetable'
 });
+// 하나만 찾아도 배열도 return
 
 /* 실제로는? */
 var posts = [
@@ -79,10 +80,13 @@ var numbers = [10, 20, 30];
 
 function reject(array, iterFunction) {
   // 채워봐용
+  return array.filter(function(number){
+    return !iterFunction(number)
+  })
 }
 
 var lessThan15 = reject(numbers, function(number) {
   return number > 15;
 })
-
+// console.log(numbers>15)
 console.log(lessThan15) // 10

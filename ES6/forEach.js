@@ -1,12 +1,12 @@
-// ES5 for()
+/* ES5 for() */
 
 var colors = ['red', 'blue', 'green'];
 
-for (var i=0; i<colors.length; i++){
+for (var i = 0; i < colors.length; i++) {
   console.log(colors[i]);
 }
 
-// ES6 forEach()
+/* ES6 forEach() */
 colors.forEach(function(color){
   console.log(color);
 })
@@ -14,47 +14,45 @@ colors.forEach(function(color){
 var numbers = [1,2,3,4,5];
 var sum = 0;
 
-numbers.forEach(function(number){
-  sum = sum + number;
-  console.log(sum)
-})
-
+/* 함수 별도 정의! */
 function add (number){
-  sum = sum + number;
-  console.log(sum)
+  sum += number;
 }
 
 numbers.forEach(add);
+console.log(sum);
 
-// In real use in working project
-
+/* 실제로는? */
 spamMails = [];
 function deleteMail(){};
+
 spamMails.foreEach(function(spamMail){
   deleteMail(spamMail);
 })
 
-// 실습1
-var posts = [
-  {id:23, title:'Daily'},
-  {id:52, title:'Code'},
-  {id:105, title:'Ruby'}
-]
-posts.forEach(function(post){
-  console.log(post.id, post.title)
-})
+/* 실습 1 */
+function handlePosts() {
+  var posts = [
+    { id: 23, title: 'Daily JS News' },
+    { id: 52, title: 'Code Refactor City' },
+    { id: 105, title: 'The Brightest Ruby' }
+  ];
 
-// 실습2 면적만 사용해서 계산
+  for (var i = 0; i < posts.length; i++){
+      savePost(posts[i]);
+  }
+  posts.forEach(function(post){
+    savePost(post);
+  });
+}
+/* 실습 2 */
 var images = [
-  {height: 10, width:30},
-  {height: 20, width:90},
-  {height: 54, width:32},
+  { height: 10, width: 30 },
+  { height: 20, width: 90 },
+  { height: 54, width: 32 }
 ];
 
 var areas = [];
-images.forEach(function(image){
+images.forEach(function(image) {
   areas.push(image.height * image.width);
-  console.log(image.height * image.width)
-})
-
-
+});
