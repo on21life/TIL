@@ -9,6 +9,9 @@ const sum = require('./utility')
 // const routes = require('./routes')
 // const dbconfig = require('./configs/database.json')
 
+
+// 불러오는 모듈명이 test가 아니라 Test 처럼 대문자로 시작하면 클래스라는 컨벤션 이라서 생성자를 바로 뽑아주는게 좋다.
+
 const total = sum([100,200,300])
 
 console.log(sum)

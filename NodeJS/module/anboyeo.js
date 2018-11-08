@@ -25,3 +25,6 @@ module.exports = {
 // exports.sayHelloInGalego = () => {
 //   return 'Adios'
 // }
+
+// 이렇게 클래스로 보낼 수도 있음.
+// module.exports = new CaretPosition()
