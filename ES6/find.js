@@ -1,87 +1,91 @@
-// ES5 for()
-var users = [{ name: "Tony St" }, { name: "Steve Rogers" }, { name: "Thor" }];
-var user;
+/* ES5 for() */
+var users = [
+  { name: 'Tony Stark' },
+  { name: 'Steve Rogers' },
+  { name: 'Thor' },
+];
 
-for (var i = 0; i < user.length; i++) {
-  if (users[i].name === "Thor") {
+var user;
+for (var i = 0; i < users.length; i++) {
+  if(users[i].name === 'Tony Stark') {
     user = users[i];
-    break; //다 돌 필요 없음.
+    break; // 다 돌 필요 없어!
   }
 }
 
-// ES6 find()
-var user = users.find(function(user) {
-  return user.name === "Tony St";
+/* ES6 find() */
+var user = users.find(function(user){
+  return user.name === 'Tony Stark';
 });
-// 하나 찾으면 끝.
 
-var user = users.find();
-console.log(user);
-
-// More complex code
+/* More complex code */
 function Car(model) {
   this.model = model;
 }
 
 var cars = [
-  new Car("Mercedes"),
-  new Car("Ferrari"),
-  new Car("BMW"),
-  new Car("HK")
+  new Car('Mercedes'),
+  new Car('Ferrari'),
+  new Car('BMW'),
+  new Car('HK'),
 ];
 
-var car = cars.find(function(car) {
-  return car.model === "HK";
+var car = cars.find(function(car){
+  return car.model === 'HK';
 });
 
-// 실제로는
-const articles = [
-  { id: 1, title: "Motto", content: "HappyHacking" },
-  { id: 2, title: "My presonal Info", content: "HappyHacking" },
-  { id: 3, title: "Ruby vs Python", content: "HappyHacking" },
-  { id: 4, title: "Welcome to the", content: "HappyHacking" }
-];
+/* 실제로는? */
+// GET http://myblog.com/articles/1
 
+const articles = [
+  { id: 1, title: 'Motto', content: 'HappyHacking' },
+  { id: 2, title: 'My presonal Info', content: 'It\'s secret guys lol' },
+  { id: 3, title: 'Ruby vs Python', content: 'Do what you want!' },
+  { id: 4, title: 'Welcome to the', content: 'Black parade' },
+  //...
+];
+  
 const articleId = getIdFromURL();
 
-// 실습1
+const article = articles.find(function(article) {
+  return article.id === articleID;
+});
+
+/* 실습 1 */
 var users = [
   { id: 1, admin: false },
   { id: 2, admin: false },
-  { id: 3, admin: true }
-];
-var admin;
+  { id: 3, admin: true },
+]
 
-admin = users.find(function(user) {
-  return user.admin;
+var admin = users.find(function(user){
+  return user.admin; // === true
 });
-console.log(admin);
 
-// 실습 2
-// 잔액이 12인 계좌를 account에 저장.
-var accounts = [{ balance: -10 }, { balance: 12 }, { balance: 0 }];
+/* 실습 2 */
+// 잔액이 12 인 계좌를 account 에 저장하자!
+var accounts = [
+  { balance: -10 },
+  { balance: 12 },
+  { balance: 0 }
+];
 
-var account = accounts.find(function(account) {
+var account = accounts.find(function(account){
   return account.balance === 12;
 });
 
-// 실습3
-var laders = [{ id: 1, height: 20 }, { id: 3, height: 25 }];
+/* 실습 3 */
+var laders = [
+  { id: 1, height: 20 },
+  { id: 3, height: 25 },
+]
 
-function findwhere(array, standard) {
-  // 채우기
-  if (Object.keys(standard) === ["height"])
-    var seeit = array.find(function(lader) {
-      return lader.height === standard.height;
-    });
-  else if (Object.keys(standard) === ["id"])
-    var seeit = array.find(function(lader) {
-      return lader.height === standard.height;
-    });
-  console.log(Object.keys(standard));
-  console.log(seeit);
+function findWhere(array, standard) {
+  var property = Object.keys(standard)[0];
+  return array.find(function(element){
+    return element[property] === standard[property];
+  });
 }
-
-// object.keys()
-findwhere(laders, { height: 20 });
-findwhere(laders, { id: 3 });
+// Object.keys({ a: 1, b: 2 })
+findWhere(ladders, { height: 20, id : 1});
+findWhere(ladders, { id: 3 });
