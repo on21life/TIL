@@ -1,10 +1,14 @@
 const express = require('express')
 const app = express();
 
+app.use(express.json());
+
+
 const movies = [
   {id: 1, title: 'Matrix'},
   {id: 2, title: 'Terminate'},
   {id: 3, title: 'Avengers'},
+  {id: 4, title: 'Titanic'},
 ]
 
 app.get('/',(req, res)=>{
@@ -37,7 +41,14 @@ app.get('/api/movies/:id', (req,res) => {
 // app.get();
 
 // POST /api/movies
-// app.post();
+app.post('/api/movies', (req,res) => {
+  const movie = {
+    id: movies.length +1,
+    title: req.body.title
+  }
+  movies.push(movie);
+  res.send(movie);
+});
 
 // PUT /api/movies/1
 // app.put();
