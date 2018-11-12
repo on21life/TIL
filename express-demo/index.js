@@ -19,7 +19,7 @@ app.get('/api/courses/:myid',(req, res) => {
   res.send(req.params.myid)
 })
 
-// 2018?q=asdf&r=asdf
+// :year --- similar with --- 2018?q=asdf&r=asdf
 app.get('/api/courses/:year',(req, res) =>{
   res.send(req.query)
 })

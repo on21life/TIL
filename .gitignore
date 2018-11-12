@@ -1,1 +1,16 @@
+# 모듈은 깃으로 안올리기 위해 
 node_modules/
+# 디버그는 공개안하는게 좋기때문에
+node_modules/
+
+# Mac 일경우
+# .DS_Store
+# *.key
+
+# Jetbrain일 경우
+# .idea/
+
+#vi에서 파일 종료시마다 예비파일은 ~로 남겨져있는데 이것이 올라가는것을 방지
+*~
+
+# General

@@ -47,7 +47,6 @@ app.post("/api/movies", (req, res) => {
   console.log('kkkkkkkkkkkkkkkkkkkkkkkk')
   console.log(validateMovie(req.body))
   console.log(req.body)
-  console.log(req.params.)
   console.log
   if (error) return res.status(400).status.send(error.message);
 
