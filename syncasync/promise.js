@@ -14,5 +14,5 @@ const promise = new Promise((resolve,reject)=>{
 
 // then은 성공했을때
 promise
-  .then(user => console.log(user))
+  .then(user => console.log(user.email))
   .catch(error => console.error(error))

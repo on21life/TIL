@@ -1,11 +1,23 @@
+//async 함수 안에 프로미스를 리턴으로 받으면 await 명시해줘서 동기화시킨다. 툴팁..?
+async function run(){
+  try{
+    const user = await getUser(1);
+    const repos = await getRepos(user.githubID);
+    const commits = await getCommits(repos[0]);
+    console.log(commits);
+  }
+  catch(error){
+  
+  }
+}
+
 console.log("메인 코드 진행중");
 
 const userPromise = getUser(1);
 userPromise
-  .then(user => getRepos(user.githubID))
-    .then(repos => getCommits(repos[0]))
-      .then(commits => console.log(commits))
-    
+  .then(user => console.log(user))
+  .catch(error => console.error(error))
+
 console.log("메인 코드 진행중");
 
 // 각 함수 블록이 완료되어야 다음 블록으로 인자가 들어가는데 이것들이 중첩되는걸 콜백지옥이라고 함.
@@ -52,20 +64,16 @@ function getUser(id, callback) {
   }, 2000);
 }
 
-function getRepos(userID) {
+function getRepos(userID, callback) {
   console.log(`Finding [${userID}]s' all github repo`);
-  return new Promise((resolve, reject)=>{
   setTimeout(() => {
-    resolve(["TIL", "ES6", "Express-demo"]);
+    callback(["TIL", "ES6", "Express-demo"]);
   }, 1500);
-})
 }
 
-function getCommits(repo) {
+function getCommits(repo, callback) {
   console.log(`Getting all commits in [${repo}]`);
-  return new Promise((resolve, reject)=>{
-    setTimeout(() => {
-      resolve(["Init repos", "commitmessage"]);
-    }, 2000);
-  })
+  setTimeout(() => {
+    callback(["Init repos", "commitmessage"]);
+  }, 2000);
 }
