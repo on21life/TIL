@@ -59,10 +59,11 @@ async function createCourse() {
 
 createCourse();
 
+/* Retrieve */
 async function getCourses() {
   // find로 찾고 limit로 갯수를 가져오고 sort로 정렬.
   // .find({})
-  const courses = await Course;
+  const courses = await Course.find();
   //.find({ price: { $lt: 15, $gt: 10 })
   //.find({ price: { $in: [10, 15] } })
   // .find({ isPublished: true })
@@ -129,6 +130,7 @@ async function updateCourse(id) {
   course.tags = ["???"];
   console.log(course);
 
+  // Save
   const rst = await course.save();
   console.log(rst);
 }
@@ -136,12 +138,12 @@ async function updateCourse(id) {
 // updateCourse("5a68fdc3615eda645bc6bdec");
 
 // 2.Update First: 직접 Update => result
-
 async function updateCourses(id) {
   // find (updateMany || updateOne || findByIdAndUpdate || findOneAndUpdate)
   const result = await Course.updateMany(
     { isPublished: true },
     {
+      // $set 도 한번 시도해 볼것
       $set: {
         author: "석현"
       }

@@ -12,7 +12,7 @@ const authorSchema = new mongoose.Schema({
 
 const courseSchema = new mongoose.Schema({
   name: String,
-  author: [authorSchema]
+  author: authorSchema
 
 })
 
