@@ -12,7 +12,7 @@ mongoose
 //가용 스키마 데이터타입:
 // String, Number, Date, Buffer, Boolean, ObjectID, Array
 
-// Validation 타입
+// Available Validation 타입
 // String: minlength, maxlength, match, enum
 // Numbers, Dates: min, max
 // All: required
@@ -25,7 +25,7 @@ const courseSchema = new mongoose.Schema({
     // custom Validator
     validate: {
       validator: function(tags) {
-        const result = tags.every(tag => tag.length > 0)
+        const result = tags.every(tag => tag.length > 0);
         return tags && tags.length > 0 && result;
       },
       message: "A Course shold hava at least 1tag"
