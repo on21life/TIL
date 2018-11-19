@@ -5,30 +5,42 @@ mongoose.connect('mongodb://localhost/relation', { useNewUrlParser: true })
   .catch(error => console.error(error.message));
 
 
-const authorSchema = new mongoose.Schema({
-  name: String,
-  github: String
-})
+  const Author = mongoose.model('Author', new mongoose.Schema({
+    name: {
+      type: String,
+      minlength: 2,
+      required: true,
+    },
+    github: String,
+  }));
 
-const courseSchema = new mongoose.Schema({
-  name: String,
-  author: authorSchema
+  const Course = mongoose.model('Course', new mongoose.Schema({
+    name: {
+      type: String,
+      minlength: 3,
+      required: true
+    },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Author'
+    }
+  }));
 
-})
+  async function createAuthor(name, github) {
+    const author = new Author({ name, github });
+    try{ 
+      const result = await author.save() 
+      console.log(result);
+    } catch(error) {
+      console.error(error.messgae)
+    };
+  }
 
-const Author = mongoose.model('Author', authorSchema)
-const Course = mongoose.model('Course', courseSchema);
+  async function createCourse(name, author) {
+    const course = new Course(name, author);
+    const result = await course.save();
+    console.log(result);
+  }
 
-async function createCourse(name, author){
-  const course = new Course({name, author});
-  const result = await course.save();
-  console.log(result)
-}
-
-async function listCourse(){
-  const courses = await Course.find();
-  console.log(courses)
-}
-
-createCourse('HyperLedger', new Author({name:'john'}))
+  createAuthor('yoon', 'on21life@hphk.kr');
 // listCourse();
