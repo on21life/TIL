@@ -1,12 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// 1.React 와 ReactDOM 라이브러리 import
+import React from "react";
+// const name = require('module-name');
+import ReactDOM from "react-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// 2.React 컴포넌트를 생성 1)함수 / 2)클래스
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function getButtonText() {
+  return "ClickME!";
+}
+
+const App = () => {
+  // const buttonText = ['happy','hacking']
+  const buttonText = { happy: "hacking" };
+  const time = new Date();
+  console.log('timezzzzzzzzzzzz');
+  return (
+    <div>
+      <h3>{time}</h3>
+      <label htmlFor="name" className="name_label">
+        Enter name:
+      </label>
+      <input type="text" id="name" />
+      <button
+        style={{
+          backgroundColor: "blue",
+          color: "white",
+          border: "solid 1px black"
+        }}
+      >
+        {/* {getButtonText()} */}
+        {buttonText.happy}
+      </button>
+    </div>
+  );
+};
+
+// 3.화면에 HTML 을 띄우기 .render(실행함수, 보여줄곳)
+ReactDOM.render(<App />, document.querySelector("#root"));
