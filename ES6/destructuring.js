@@ -48,6 +48,7 @@ function summary({name, extension, size}){
 }
 
 summary(myFile);
+console.log(summary(myFile))
 /* 실제로는? */
 
 /* 실습 1 */
@@ -66,8 +67,8 @@ const companies=[
   'Apple'
 ];
 /* ES6 ??? */
-const [name] = companies; //첫번째 것을 뽑음
-console.log(name);//Google
+const [name111] = companies; //첫번째 것을 뽑음
+console.log(name111);//Google
 const [name1, name2, name3] = companies;
 console.log(name1, name2, name3)//Google IBM Amazon
 
@@ -85,10 +86,12 @@ const wannaGo = [
   {name: 'Google', location: 'Mountatin View'},
   {name: 'Facebook', location: 'Menlo Park'},
   {name: 'Apple', location: 'Cupertino'},
-]
+];
 
 let [company] = wannaGo;
+console.log(company);
 [{location}] = wannaGo; //wannaGo[0].location
+console.log(location);
 // 실제 개별에서는
 const points = [
   [7,12],
@@ -116,11 +119,6 @@ const user =  {
 
 function signup ({username, password}){
   // const user = new User
-}
-const user =  {
-  username:'neo',
-  password:'123123',
-
 }
 signup(user)
 
