@@ -12,8 +12,11 @@ function getButtonText() {
 const App = () => {
   // const buttonText = ['happy','hacking']
   const buttonText = { happy: "hacking" };
-  const time = new Date();
-  console.log('timezzzzzzzzzzzz');
+
+  function getTime() {
+    return new Date().toLocaleTimeString();
+  }
+  console.log("timezzzzzzzzzzzz");
   return (
     <div>
       <h3>{time}</h3>
