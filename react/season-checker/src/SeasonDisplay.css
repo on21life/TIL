@@ -7,7 +7,7 @@
 }
 
 .season-display.winter i {
-  color: deepskyblue;
+  color: rgba(255, 230, 0, 0.377);
 }
 .season-display.summer i {
   color: red;
