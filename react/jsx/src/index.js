@@ -14,12 +14,12 @@ const App = () => {
   const buttonText = { happy: "hacking" };
 
   function getTime() {
-    return new Date().toLocaleTimeString();
+    return (new Date()).toLocaleTimeString();
   }
   console.log("timezzzzzzzzzzzz");
   return (
     <div>
-      <h3>{time}</h3>
+      <h3>{getTime()}</h3>
       <label htmlFor="name" className="name_label">
         Enter name:
       </label>

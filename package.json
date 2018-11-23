@@ -25,6 +25,7 @@
     "leeeunhye": "^1.2.0",
     "mongoose": "^5.3.11",
     "morgan": "^1.9.1",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "truffle-hdwallet-provider": "0.0.6"
   }
 }

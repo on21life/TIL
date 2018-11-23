@@ -13,7 +13,9 @@ class App extends Component {
     this.setState({ images: response.data.results }, () => {
       // console.log(this.state.images);
     });
+    // this.setState({ images: response.data.results });
   };
+
   render() {
     return (
       <div className="ui container">

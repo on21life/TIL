@@ -18,13 +18,13 @@ class SearchBar extends Component {
   // onInputClick(event){
   //   console.log('Click!')
   // }
-  componentDidUpdate() {
-    console.log(this.state);
-  }
+  // componentDidUpdate() {
+  //   console.log(this.state);
+  // }
   // removeBadWords(word) {
   //   if (word === "똥") return "금";
   // }
-  removeBadWords(word) {
+  removeBadWords = (word) => {
     // 이녀석 또한 콜백이 필요하다.
     this.setState({ keyword: word }, () => {
       if (/.*fuck.*/i.test(this.state.keyword)) {
@@ -35,9 +35,8 @@ class SearchBar extends Component {
     });
   }
 
-  
   onFormSubmit = event => {
-  // 기본적으로 적용된 디폴트값을 작동하지 않게 해줌.
+    // 기본적으로 적용된 디폴트값을 작동하지 않게 해줌.
     event.preventDefault();
     this.props.onUserSubmit(this.state.keyword);
     // console.log(this.state.keyword);

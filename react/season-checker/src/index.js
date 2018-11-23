@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
-import Spinner from "./Spinner.js";
+import Spinner from "./Spinner";
 import SeasonError from "./SeasonError";
 // 함수형
 // const App = () => {
@@ -33,7 +33,7 @@ class App extends React.Component {
   renderContent() {
     // 거부
     if (this.state.errorMessage && !this.state.lat) {
-      return <SeasonError />
+      return <SeasonError message={this.state.errorMessage}/>
       // return <div>Error: {this.state.errorMessage}</div>;
     }
     // 허용
@@ -74,9 +74,9 @@ class App extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    console.log("컴포넌트 UPDATED & RE-rended");
-  }
+  // componentDidUpdate() {
+  //   console.log("컴포넌트 UPDATED & RE-rended");
+  // }
 }
 
 ReactDOM.render(<App />, document.querySelector("#root"));

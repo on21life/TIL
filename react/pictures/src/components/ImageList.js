@@ -4,9 +4,11 @@ import React from "react";
 export default function ImageList(props) {
   const images = props.images.map(image => {
     // key라는 프로퍼티를 이용해서 잦은 setState로 인한 re render를 방지함.
-    return <div key={image.id}>
-      <img src={image.urls.regular} alt={image.description} />;
+    return (
+      <div key={image.id}>
+        <img src={image.urls.regular} alt={image.description} />;
       </div>
+    );
   });
   console.log(props.images);
   return <div>{images}</div>;
